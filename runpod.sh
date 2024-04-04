@@ -147,7 +147,8 @@ else
     pip install -U "huggingface_hub[cli]"
     huggingface-cli login --token "$HF_TOKEN"
 
-    git clone https://github.com/EleutherAI/lm-evaluation-harness
+    # git clone https://github.com/EleutherAI/lm-evaluation-harness
+    git clone https://github.com/arcee-ai/arcee-eval.git
     # TODO: move to reqs
     pip install boto3
     pip install rouge_score
