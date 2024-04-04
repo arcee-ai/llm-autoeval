@@ -147,7 +147,6 @@ else
     pip install -U "huggingface_hub[cli]"
     huggingface-cli login --token "$HF_TOKEN"
 
-    # git clone https://github.com/EleutherAI/lm-evaluation-harness
     git clone https://github.com/arcee-ai/arcee-eval.git
     # TODO: move to reqs
     pip install boto3
@@ -156,13 +155,13 @@ else
     #echo "lm-evaluation-harness/lm_eval/tasks/"
     #ls -l lm-evaluation-harness/lm_eval/tasks/
 
-    # cd llm-autoeval
-    # SCRIPT_DIR="$(pwd)"
-    # echo "Current dir:" "$SCRIPT_DIR"
-    # ls -l
-    # python llm_autoeval/download.py --task "${BENCHMARK}" --out_dir "${SCRIPT_DIR}"
-    # # shellcheck disable=SC2103
-    # cd ..
+    cd llm-autoeval
+    SCRIPT_DIR="$(pwd)"
+    echo "Current dir:" "$SCRIPT_DIR"
+    ls -l
+    python llm_autoeval/download.py --task "${BENCHMARK}" --out_dir "${SCRIPT_DIR}"
+    # shellcheck disable=SC2103
+    cd ..
     cp -r llm-autoeval/tasks/* lm-evaluation-harness/lm_eval/tasks/
 
     cd lm-evaluation-harness
