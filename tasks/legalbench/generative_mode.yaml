@@ -1,0 +1,39 @@
+dataset_path: arcee-ai/legalbench_tasks
+dataset_kwargs:
+
+output_type: generate_until
+training_split: null
+validation_split: null
+test_split: test
+
+fewshot_split: null
+process_docs: !function utils.process_docs
+# process_results: !function utils.process_results
+doc_to_text: "{{query}}"
+
+# for COT
+#doc_to_text: "You are a helpful law expert, and your task is to answer a multi-choice question using the provided context. Please first think step-by-step and then choose the answer from the provided options. Organize your output in a json formatted as Dict{"step_by_step_thinking": Str(explanation), "answer_choice": Str(label). Your responses will be used for research purposes only, so please have a definite answer. {{query}}"
+
+doc_to_target: "{{gold}}"
+#doc_to_choice: "choices"
+num_fewshot: 0
+
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+
+generation_kwargs:
+  until:
+    - "\n\n"
+    - "."
+    - ","
+  do_sample: false
+  temperature: 0.0
+
+repeats: 1
+
+metadata:
+  version: 0.0

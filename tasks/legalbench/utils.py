@@ -9,8 +9,10 @@ import re
 
 import numpy as np
 
+
 def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
     def _process_doc(doc):
+        # TODO:  should we actually replace 'Q:' with 'Question:' ?
         out_doc = {
             "query": doc["inputs"],
             "choices": doc["multiple_choice_targets"],
