@@ -3,4 +3,4 @@ include: ../multiple_choice_template_yaml
 task: legalbench_cuad_notice_period_to_terminate_renewal_multiple_choice
 group: 
   - legalbench_exact_match
-  - legalbench_INTERPRETATION_TASKS
+  - legalbench_interpretation_tasks

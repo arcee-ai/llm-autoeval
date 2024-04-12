@@ -3,4 +3,4 @@ include: ../multiple_choice_template_yaml
 task: legalbench_opp115_policy_change_multiple_choice
 group: 
   - legalbench_exact_match
-  - legalbench_INTERPRETATION_TASKS
+  - legalbench_interpretation_tasks

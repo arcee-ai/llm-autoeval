@@ -3,4 +3,4 @@ include: ../multiple_choice_template_yaml
 task: legalbench_diversity_6_multiple_choice
 group: 
   - legalbench_exact_match
-  - legalbench_CONCLUSION_TASKS
+  - legalbench_conclusion_tasks

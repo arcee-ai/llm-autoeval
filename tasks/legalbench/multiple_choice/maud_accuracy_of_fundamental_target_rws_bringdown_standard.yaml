@@ -3,4 +3,4 @@ include: ../multiple_choice_template_yaml
 task: legalbench_maud_accuracy_of_fundamental_target_rws_bringdown_standard_multiple_choice
 group: 
   - legalbench_exact_match
-  - legalbench_INTERPRETATION_TASKS
+  - legalbench_interpretation_tasks

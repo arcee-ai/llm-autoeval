@@ -3,4 +3,4 @@ include: ../multiple_choice_template_yaml
 task: legalbench_legal_reasoning_causality_multiple_choice
 group: 
   - legalbench_exact_match
-  - legalbench_RHETORIC_TASKS
+  - legalbench_rhetoric_tasks
