@@ -55,6 +55,18 @@ def calculate_average(data, task):
         elif task == "truthfulqa":
             value = data["results"]["truthfulqa_mc"]["mc2"]
             return 0.0 if math.isnan(value) else value * 100
+
+    elif BENCHMARK == "medqa":
+        if task == "medqa_4options":
+            return data["results"]["medqa_4options"]["acc,none"] * 100
+
+    elif BENCHMARK == "medmcqa":
+        if task == "medmcqa":
+            return data["results"]["medmcqa"]["acc,none"] * 100
+    
+    elif BENCHMARK == "pubmedqa":
+        if task == "pubmedqa":
+            return data["results"]["pubmedqa"]["acc,none"] * 100
     
     elif BENCHMARK == "legalbench":
         if task == "legalbench_issue_tasks":
