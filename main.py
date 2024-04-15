@@ -26,7 +26,7 @@ def main(directory: str, elapsed_time: float) -> None:
     elif BENCHMARK == "nous":
         tasks = ["AGIEval", "GPT4All", "TruthfulQA", "Bigbench"]
     elif BENCHMARK == "medqa":
-        tasks = ["medqa_4options"]
+        tasks = ["medqa"]
     elif BENCHMARK == "medmcqa":
         tasks = ["medmcqa"]
     elif BENCHMARK == "pubmedqa":
