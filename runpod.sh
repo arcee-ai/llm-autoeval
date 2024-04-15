@@ -145,7 +145,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     python ../llm-autoeval/main.py . $(($end-$start))
 
 elif [ "$BENCHMARK" == "medqa" ]; then
-    git clone -b add-agieval https://github.com/dmahan93/lm-evaluation-harness
+    git clone https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
 
@@ -164,7 +164,7 @@ elif [ "$BENCHMARK" == "medqa" ]; then
     python ../llm-autoeval/main.py . $(($end-$start))
 
 elif [ "$BENCHMARK" == "medmcqa" ]; then
-    git clone -b add-agieval https://github.com/dmahan93/lm-evaluation-harness
+    git clone https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
 
@@ -184,7 +184,7 @@ elif [ "$BENCHMARK" == "medmcqa" ]; then
     python ../llm-autoeval/main.py . $(($end-$start))
 
 elif [ "$BENCHMARK" == "pubmedqa" ]; then
-    git clone -b add-agieval https://github.com/dmahan93/lm-evaluation-harness
+    git clone https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
 
