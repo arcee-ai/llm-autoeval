@@ -146,15 +146,17 @@ elif [ "$BENCHMARK" == "openllm" ]; then
 
 elif [ "$BENCHMARK" == "medqa" ]; then
     git clone https://github.com/EleutherAI/lm-evaluation-harness
+    
     cd lm-evaluation-harness
     pip install -e .
+    pip install accelerate
 
     benchmark="medqa"
-    python main.py \
-        --model hf-causal \
-        --model_args pretrained=$MODEL_ID,trust_remote_code=$TRUST_REMOTE_CODE \
+    accelerate launch -m lm_eval \
+        --model hf \
+        --model_args pretrained=${MODEL_ID},dtype=auto,trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks medqa_4options \
-        --device cuda:$cuda_devices \
+        --num_fewshot 0 \
         --batch_size auto \
         --output_path ./${benchmark}.json
 
@@ -167,13 +169,14 @@ elif [ "$BENCHMARK" == "medmcqa" ]; then
     git clone https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
+    pip install accelerate
 
     benchmark="medmcqa"
-    python main.py \
-        --model hf-causal \
-        --model_args pretrained=$MODEL_ID,trust_remote_code=$TRUST_REMOTE_CODE \
+    accelerate launch -m lm_eval \
+        --model hf \
+        --model_args pretrained=${MODEL_ID},dtype=auto,trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks medmcqa \
-        --device cuda:$cuda_devices \
+        --num_fewshot 0 \
         --batch_size auto \
         --output_path ./${benchmark}.json
 
@@ -187,13 +190,14 @@ elif [ "$BENCHMARK" == "pubmedqa" ]; then
     git clone https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
+    pip install accelerate
 
     benchmark="pubmedqa"
-    python main.py \
-        --model hf-causal \
-        --model_args pretrained=$MODEL_ID,trust_remote_code=$TRUST_REMOTE_CODE \
+    accelerate launch -m lm_eval \
+        --model hf \
+        --model_args pretrained=${MODEL_ID},dtype=auto,trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks pubmedqa \
-        --device cuda:$cuda_devices \
+        --num_fewshot 0 \
         --batch_size auto \
         --output_path ./${benchmark}.json
 
