@@ -145,21 +145,18 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     python ../llm-autoeval/main.py . $(($end-$start))
 
 elif [ "$BENCHMARK" == "medqa" ]; then
-    git clone https://github.com/EleutherAI/lm-evaluation-harness
+    git clone -b add-agieval https://github.com/dmahan93/lm-evaluation-harness
     cd lm-evaluation-harness
-    python -m pip install --upgrade pip
     pip install -e .
-    pip install --upgrade vllm
-    pip install langdetect immutabledict
 
     benchmark="medqa"
-    lm_eval --model vllm \
-        --model_args pretrained=${MODEL_ID},trust_remote_code=$TRUST_REMOTE_CODE \
+    python main.py \
+        --model hf-causal \
+        --model_args pretrained=$MODEL_ID,trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks medqa_4options \
-        --num_fewshot 0 \
+        --device cuda:$cuda_devices \
         --batch_size auto \
         --output_path ./${benchmark}.json
-
 
     end=$(date +%s)
     echo "Elapsed Time: $(($end-$start)) seconds"
@@ -167,18 +164,16 @@ elif [ "$BENCHMARK" == "medqa" ]; then
     python ../llm-autoeval/main.py . $(($end-$start))
 
 elif [ "$BENCHMARK" == "medmcqa" ]; then
-    git clone https://github.com/EleutherAI/lm-evaluation-harness
+    git clone -b add-agieval https://github.com/dmahan93/lm-evaluation-harness
     cd lm-evaluation-harness
-    python -m pip install --upgrade pip
     pip install -e .
-    pip install --upgrade vllm
-    pip install langdetect immutabledict
 
     benchmark="medmcqa"
-    lm_eval --model vllm \
-        --model_args pretrained=${MODEL_ID},trust_remote_code=$TRUST_REMOTE_CODE \
+    python main.py \
+        --model hf-causal \
+        --model_args pretrained=$MODEL_ID,trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks medmcqa \
-        --num_fewshot 0 \
+        --device cuda:$cuda_devices \
         --batch_size auto \
         --output_path ./${benchmark}.json
 
@@ -189,18 +184,16 @@ elif [ "$BENCHMARK" == "medmcqa" ]; then
     python ../llm-autoeval/main.py . $(($end-$start))
 
 elif [ "$BENCHMARK" == "pubmedqa" ]; then
-    git clone https://github.com/EleutherAI/lm-evaluation-harness
+    git clone -b add-agieval https://github.com/dmahan93/lm-evaluation-harness
     cd lm-evaluation-harness
-    python -m pip install --upgrade pip
     pip install -e .
-    pip install --upgrade vllm
-    pip install langdetect immutabledict
 
     benchmark="pubmedqa"
-    lm_eval --model vllm \
-        --model_args pretrained=${MODEL_ID},trust_remote_code=$TRUST_REMOTE_CODE \
+    python main.py \
+        --model hf-causal \
+        --model_args pretrained=$MODEL_ID,trust_remote_code=$TRUST_REMOTE_CODE \
         --tasks pubmedqa \
-        --num_fewshot 0 \
+        --device cuda:$cuda_devices \
         --batch_size auto \
         --output_path ./${benchmark}.json
 
